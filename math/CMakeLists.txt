@@ -1,1 +1,0 @@
-add_library(math_lib mathlib.cpp)
