@@ -19,6 +19,33 @@ namespace geometry {
                 return isnan(x) || isnan(y);
             }
 
+            Vector2<T> operator+(const Vector2& v) {
+                return Vector2(x+v.x, y+v.y);
+            }
+
+            Vector2<T>& operator+=(const Vector2& v) {
+                x += v.x; y += v.y;
+                return *this;
+            }
+
+            Vector2<T> operator-(const Vector2& v) {
+                return Vector2(x-v.x, y-v.y);
+            }
+
+            Vector2<T>& operator-=(const Vector2& v) {
+                x -= v.x; y -= v.y;
+                return *this;
+            }
+
+            Vector2<T> operator*(T s) {
+                return Vector2(s*x, s*y);
+            }
+
+            Vector2<T>& operator*=(T s) {
+                x *= s; y *= s;
+                return *this;
+            }
+
             friend std::ostream& operator<<(std::ostream& s, const Vector2& v) {
                 s << "Vector2<" << v.x << "," << v.y << ">";
                 return s;
