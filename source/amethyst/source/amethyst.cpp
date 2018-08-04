@@ -17,7 +17,8 @@ int main(){
     cout << "V2:" << v2 << endl;
 
     //cout << v1 + v2 << endl;
-    cout << v1 * 10 << endl;
+    cout << Vector2<int>(20, 40) / 10 << endl;
+    cout << 10.0f * Vector2<float>(5.0f, 6.0f) << endl;
 
     return 0;
 }

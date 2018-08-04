@@ -32,17 +32,34 @@ namespace geometry {
                 return Vector2(x-v.x, y-v.y);
             }
 
+            Vector2<T> operator-() const {
+                return Vector2<T>(-x, -y);
+            }
+
             Vector2<T>& operator-=(const Vector2& v) {
                 x -= v.x; y -= v.y;
                 return *this;
             }
 
             Vector2<T> operator*(T s) {
-                return Vector2(s*x, s*y);
+                return Vector2<T>(s*x, s*y);
             }
 
             Vector2<T>& operator*=(T s) {
                 x *= s; y *= s;
+                return *this;
+            }
+
+            Vector2<T> operator/(T f) {
+                assert(f != 0);
+                float inv = (float)1 / f;
+                return Vector2(x * inv, y * inv);
+            }
+
+            Vector2<T>& operator/=(T f) {
+                assert(f != 0);
+                float inv = (float)1 / f;
+                x *= inv; y *= inv;
                 return *this;
             }
 
@@ -61,8 +78,16 @@ namespace geometry {
         T x, y, z;
     };
 
+
     typedef Vector2<float> Vector2f;
     typedef Vector2<int> Vector2i;
     typedef Vector3<float> Vector3f;
     typedef Vector3<int> Vector3i;
+
+    // Inlined functions
+    template <typename T>
+    inline Vector2<T> operator*(T s, const Vector2<T> &v) {
+        return v * s;
+    }
+
 }
