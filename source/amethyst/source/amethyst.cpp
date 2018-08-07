@@ -25,5 +25,8 @@ int main(){
 
     cout << "Normal:  " << Normal(Vector3f(1.0f, 0.5f, 0.0f)) << endl;
     cout << "Normal2: " << Vector3f(1.0f, 0.5f, 0.0f).Normal() << endl;
+
+    cout << "Cross: " << Cross(Vector3f(1.0f, 0.0f, 0.0f), Vector3f(0.0f, 1.0f, 0.0f)) << endl;
+    cout << "MAXDIMENSION: " << MaxDimension(Vector3f(1.0f, 0.0f, 1.5f)) << endl;
     return 0;
 }
