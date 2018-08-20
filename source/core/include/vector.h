@@ -23,7 +23,11 @@ namespace geometry {
             }
 
             float Length() const {
-                return std::sqrt((x * x + y * y));
+                return std::sqrt(LengthSquared());
+            }
+
+            float LengthSquared() const {
+                return x * x + y * y;
             }
 
             Vector2<T> Normal() const {
@@ -105,7 +109,11 @@ namespace geometry {
             }
 
             float Length() const {
-                return std::sqrt(x * x + y * y + z * z);
+                return std::sqrt(LengthSquared());
+            }
+
+            float LengthSquared() const {
+                return x * x + y * y + z * z;
             }
 
             Vector3<T> Normal() const {
@@ -169,13 +177,13 @@ namespace geometry {
     typedef Vector3<int> Vector3i;
 
     // Vector 2 In-Line
-    template <typename T> inline Vector2<T>
-    operator*(T s, const Vector2<T> &v) {
+    template <typename T, typename U>
+    inline Vector2<T> operator*(U s, const Vector2<T> &v) {
         return v * s;
     }
 
-    template <typename T> inline Vector3<T>
-    operator*(T s, const Vector3<T> &v) {
+    template <typename T, typename U>
+    inline Vector3<T> operator*(U s, const Vector3<T> &v) {
         return v * s;
     }
 

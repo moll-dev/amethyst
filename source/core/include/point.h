@@ -51,8 +51,22 @@ namespace geometry {
                 return *this;
             }
 
-            friend std::ostream& operator<<(std::ostream& s, Point3 &p) {
-                s << "Point3<" << p.x << "," << p.y << "," << ">";
+            Point3<T> &operator-=(const Vector3<T> &v) {
+                x - v.x; y - v.y; z - v.z;
+                return *this;
+            }
+            
+            Point3<T> operator*(T s) const {
+                return Point3(s * x, s * y, s * z);
+            }
+
+            Point3<T> &operator*=(T s) {
+                x *= s; y *= s; z *= s;
+                return *this;
+            }
+
+            friend std::ostream& operator<<(std::ostream& s, const Point3 &p) {
+                s << "Point3<" << p.x << "," << p.y << "," << p.z << ">";
                 return s;
             }
 
@@ -101,7 +115,16 @@ namespace geometry {
                 return *this;
             }
 
-            friend std::ostream& operator<<(std::ostream& s, Point2 &p) {
+            Point2<T> operator*(T s) const {
+                return Point2(s * x, s * y);
+            }
+
+            Point2<T> &operator*=(T s) {
+                x *= s; y *= s;
+                return *this;
+            }
+
+            friend std::ostream& operator<<(std::ostream& s, const Point2 &p) {
                 s << "Point2<" << p.x << "," << p.y << ">";
                 return s;
             }
@@ -113,6 +136,66 @@ namespace geometry {
     typedef Point2<int> Point2i;
     typedef Point3<float> Point3f;
     typedef Point3<int> Point3i;
+
+    template <typename T, typename U> 
+    inline Point2<T> operator*(U f, const Point2<T> &p) {
+        return p * f;
+    }
+
+    template <typename T, typename U>
+    inline Point3<T> operator*(U f, const Point3<T> &p) {
+        return p * f;
+    }
+
+    template <typename T> Point3<T>
+    Min(const Point3<T> p1, const Point3<T> p2) {
+        return Point3<T>(std::min(p1.x, p2.x), std::min(p1.y, p2.y), std::min(p1.z, p2.z));
+    }
+
+    template <typename T> Point2<T>
+    Min(const Point2<T> p1, const Point2<T> p2) {
+        return Point2<T>(std::min(p1.x, p2.x), std::min(p1.y, p2.y));
+    }
+
+    template <typename T> Point3<T>
+    Max(const Point3<T> p1, const Point3<T> p2) {
+        return Point3<T>(std::max(p1.x, p2.x), std::max(p1.y, p2.y), std::max(p1.z, p2.z));
+    }
+
+    template <typename T> Point2<T>
+    Max(const Point2<T> p1, const Point2<T> p2) {
+        return Point2<T>(std::max(p1.x, p2.x), std::max(p1.y, p2.y));
+    }
+
+    template <typename T> inline float
+    Distance(const Point3<T> &p1, const Point3<T> &p2) {
+        return (p1 - p2).Length();
+    }
+
+    template <typename T> inline float
+    Distance(const Point2<T> &p1, const Point2<T> &p2) {
+        return (p1 - p2).Length();
+    }
+
+    template <typename T> inline float
+    DistanceSquared(const Point3<T> &p1, const Point3<T> &p2) {
+        return (p1 - p2).LengthSquared();
+    }
+
+    template <typename T> inline float
+    DistanceSquared(const Point2<T> &p1, const Point3<T> &p2) {
+        return (p1 - p2).LengthSquared();
+    }
+
+    template <typename T> Point3<T>
+    Lerp(float t, const Point3<T> &p0, const Point3<T> &p1) {
+        return t * p1;
+    }
+
+    template <typename T> Point2<T>
+    Lerp(float t, const Point2<T> &p0, const Point2<T> &p1) {
+        return t * p1;
+    }
 }
 
 #endif // POINT_H
