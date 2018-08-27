@@ -7,8 +7,7 @@
 #include "geometry.h"
 
 namespace geometry {
-    template <typename T> 
-    class Normal3 {
+    template <typename T> class Normal3 {
         public:
             Normal3() {
                 x = y = z = 0;
@@ -22,7 +21,7 @@ namespace geometry {
             }
 
             explicit Normal3<T>(const Vector3<T> &v): x(v.x), y(v.y), z(v.z) {
-                assert(!v.HasNaNs());    
+                assert(!v.HasNaNs());
             }
 
             bool HasNaNs() const {
@@ -36,34 +35,6 @@ namespace geometry {
 
             T x, y, z;
     };
-
-    typedef Normal3<float> Normal3f;
-    typedef Normal3<int> Normal3i;
-
-    template <typename T> inline Normal3<T>
-    Faceforward(const Normal3<T> &n, const Vector3<T> &v) {
-        return (Dot(n,v) < 0.f) ? -n : n;
-    }
-
-    template <typename T> inline T
-    Dot(const Normal3<T> &n1, const Normal3<T> &n2) {
-        return n1.x * n2.x + n1.y * n2.y + n1.z * n2.z;
-    } 
-
-    template <typename T> inline T
-    Dot(const Normal3<T> &n1, const Vector3<T> &v2) {
-        return n1.x * v2.x + n1.y * v2.y + n1.z * v2.z;
-    }
-
-    template <typename T> inline T
-    AbsDot(const Normal3<T> &n1, const Normal3<T> &n2) {
-        return std::abs(Dot(n1, n2));
-    }
-
-    template <typename T> inline T
-    AbsDot(const Normal3<T> &n1, const Vector3<T> &v2) {
-        return std::abs(Dot(n1, v2));
-    }
 }
 
 #endif // NORMAL_H

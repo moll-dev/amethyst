@@ -7,7 +7,6 @@
 #include "geometry.h"
 
 namespace geometry {
-
     template <typename T> class Vector2 {
         public:
             Vector2() {
@@ -88,9 +87,6 @@ namespace geometry {
             // Public Vector2 Data
             T x, y;
     };
-
-    typedef Vector2<float> Vector2f;
-    typedef Vector2<int> Vector2i;
 
     template <typename T> class Vector3 {
         public:
@@ -173,99 +169,6 @@ namespace geometry {
             // Public Vector2 Data
             T x, y, z;
     };
-
-    typedef Vector3<float> Vector3f;
-    typedef Vector3<int> Vector3i;
-
-    // Vector 2 In-Line
-    template <typename T, typename U>
-    inline Vector2<T> operator*(U s, const Vector2<T> &v) {
-        return v * s;
-    }
-
-    template <typename T, typename U>
-    inline Vector3<T> operator*(U s, const Vector3<T> &v) {
-        return v * s;
-    }
-
-    template <typename T> inline Vector2<T>
-    Normal(const Vector2<T> &v) {
-        return Vector2<T>(v.x / v.Length(), v.y / v.Length());
-    }
-
-    template <typename T> inline Vector3<T>
-    Normal(const Vector3<T> &v) {
-        return Vector3<T>(v.x / v.Length(), v.y  / v.Length(), v.z / v.Length());
-    }
-
-    template <typename T> inline T
-    Dot(const Vector3<T> &v1, const Vector3<T> &v2) {
-        return v1.x * v2.x + v1.y * v2.y + v1.z * v2.z;
-    } 
-
-    template <typename T> inline T
-    Dot(const Vector2<T> &v1, const Vector2<T> &v2) {
-        return v1.x * v2.x + v1.y * v2.y;
-    }
-
-    template <typename T> inline T
-    Dot(const Vector3<T> &v1, const Normal3<T> &n2) {
-        return v1.x * n2.x + v1.y * n2.y + v1.z * n2.z;
-    } 
-
-    template <typename T> inline T
-    AbsDot(const Vector3<T> &v1, const Vector3<T> &v2) {
-        return std::abs(Dot(v1, v2));
-    }
-
-    template <typename T> inline T
-    AbsDot(const Vector3<T> &v1, const Normal3<T> &n2) {
-        return std::abs(Dot(v1, n2));
-    }
-
-    template <typename T> inline T
-    AbsDot(const Vector2<T> &v1, const Vector3<T> &v2) {
-        return std::abs(Dot(v1, v2));
-    }
-
-    template <typename T> inline Vector3<T>
-    Cross(const Vector3<T> &v1, const Vector3<T> &v2) {
-        double v1x = v1.x, v1y = v1.y, v1z = v1.z;
-        double v2x = v2.x, v2y = v2.y, v2z = v2.z;
-        return Vector3<T>((v1y * v2z) - (v1z * v2y),
-                          (v1z * v2x) - (v1x * v2z),
-                          (v1x * v2y) - (v1y * v2x));
-    }
-    
-    template <typename T> T
-    MinComponent(const Vector2<T> v) {
-        return std::min(v.x, v.y);
-    }
-
-    template <typename T> T
-    MinComponent(const Vector3<T> &v) {
-        return std::min(v.x, std::min(v.y, v.z));
-    }
-
-    template <typename T> T
-    MaxComponent(const Vector2<T> &v) {
-        return std::max(v.x, v.y);
-    }
-
-    template <typename T> T
-    MaxComponent(const Vector3<T> &v) {
-        return std::max(v.x, std::max(v.y, v.z));
-    }
-
-    template <typename T> int
-    MaxDimension(const Vector2<T> &v) {
-        return v.x > v.y ? 0 : 2; 
-    }
-
-    template <typename T> int
-    MaxDimension(const Vector3<T> &v) {
-        return (v.x > v.y) ? ((v.x > v.z) ? 0 : 2) : ((v.y > v.z) ? 1 : 2);
-    }
 } // namespace geometry
 
 #endif // VECTOR_H
