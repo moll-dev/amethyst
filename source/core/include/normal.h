@@ -35,8 +35,6 @@ namespace geometry {
             }
 
             T x, y, z;
-
-           
     };
 
     typedef Normal3<float> Normal3f;
@@ -48,14 +46,24 @@ namespace geometry {
     }
 
     template <typename T> inline T
-    Dot(const Normal3<T> &n1, const Vector3<T> &v2) {
-        return n1.x * v2.x + n1.y * v2.y + n1.z * v2.z;
+    Dot(const Normal3<T> &n1, const Normal3<T> &n2) {
+        return n1.x * n2.x + n1.y * n2.y + n1.z * n2.z;
     } 
 
     template <typename T> inline T
-    Dot(const Vector3<T> &v1, const Normal3<T> &n2) {
-        return v1.x * n2.x + v1.y * n2.y + v1.z * n2.z;
-    } 
+    Dot(const Normal3<T> &n1, const Vector3<T> &v2) {
+        return n1.x * v2.x + n1.y * v2.y + n1.z * v2.z;
+    }
+
+    template <typename T> inline T
+    AbsDot(const Normal3<T> &n1, const Normal3<T> &n2) {
+        return std::abs(Dot(n1, n2));
+    }
+
+    template <typename T> inline T
+    AbsDot(const Normal3<T> &n1, const Vector3<T> &v2) {
+        return std::abs(Dot(n1, v2));
+    }
 }
 
 #endif // NORMAL_H

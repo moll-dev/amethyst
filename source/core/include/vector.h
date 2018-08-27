@@ -208,6 +208,26 @@ namespace geometry {
         return v1.x * v2.x + v1.y * v2.y;
     }
 
+    template <typename T> inline T
+    Dot(const Vector3<T> &v1, const Normal3<T> &n2) {
+        return v1.x * n2.x + v1.y * n2.y + v1.z * n2.z;
+    } 
+
+    template <typename T> inline T
+    AbsDot(const Vector3<T> &v1, const Vector3<T> &v2) {
+        return std::abs(Dot(v1, v2));
+    }
+
+    template <typename T> inline T
+    AbsDot(const Vector3<T> &v1, const Normal3<T> &n2) {
+        return std::abs(Dot(v1, n2));
+    }
+
+    template <typename T> inline T
+    AbsDot(const Vector2<T> &v1, const Vector3<T> &v2) {
+        return std::abs(Dot(v1, v2));
+    }
+
     template <typename T> inline Vector3<T>
     Cross(const Vector3<T> &v1, const Vector3<T> &v2) {
         double v1x = v1.x, v1y = v1.y, v1z = v1.z;
