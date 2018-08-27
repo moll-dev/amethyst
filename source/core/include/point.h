@@ -4,10 +4,9 @@
 #include <assert.h>
 #include <math.h>
 #include <iostream>
-#include <vector.h>
+#include "geometry.h"
 
 namespace geometry {
-    
     template <typename T> class Point3 {
         public:
             Point3() {
@@ -165,6 +164,36 @@ namespace geometry {
     template <typename T> Point2<T>
     Max(const Point2<T> p1, const Point2<T> p2) {
         return Point2<T>(std::max(p1.x, p2.x), std::max(p1.y, p2.y));
+    }
+
+    template <typename T> 
+    Point2<T> Floor(const Point2<T> &p) {
+        return Point2<T>(std::floor(p.x), std::floor(p.y));
+    }
+
+    template <typename T>
+    Point2<T> Ceil(const Point2<T> &p) {
+        return Point2<T>(std::ceil(p.x), std::ceil(p.y));
+    }
+
+    template <typename T>
+    Point2<T> Abs(const Point2<T> &p) {
+        return Point2<T>(std::abs(p.x), std::abs(p.y));
+    }
+
+    template <typename T> 
+    Point3<T> Floor(const Point3<T> &p) {
+        return Point3<T>(std::floor(p.x), std::floor(p.y), std::floor(p.z));
+    }
+
+    template <typename T>
+    Point3<T> Ceil(const Point3<T> &p) {
+        return Point3<T>(std::ceil(p.x), std::ceil(p.y), std::ceil(p.z));
+    }
+
+    template <typename T>
+    Point3<T> Abs(const Point3<T> &p) {
+        return Point3<T>(std::abs(p.x), std::abs(p.y), std::ceil(p.z));
     }
 
     template <typename T> inline float

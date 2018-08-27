@@ -1,6 +1,5 @@
 #include <iostream>
 #include <geometry.h>
-#include <point.h>
 
 using namespace std;
 using namespace geometry;
@@ -19,6 +18,14 @@ int main(){
     cout << "Max: " << Max(p2_a, p2_b) << endl;
     cout << "Max: " << Max(p3_a, p3_b) << endl;
 
+    cout << "Floor: " << Floor(p2_a) << endl;
+    cout << "Floor: " << Floor(p3_a) << endl;
+
+    Normal3f n1 = Normal3f(1.0f, 1.0f, 1.0f);
+    cout << n1 << endl;
+
+    Normal3f n2 = Normal3f(Vector3f(1.0f, 1.0f, 1.0f));
+    cout << n2 << endl;
     cout << "Thanks tom!" << endl;
     return 0;
 }

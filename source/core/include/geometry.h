@@ -1,12 +1,12 @@
 #ifndef GEOMETRY_H
 #define GEOMETRY_H
 
-#include <assert.h>
-#include <math.h>
-#include <iostream>
+#include "vector.h"
+#include "point.h"
+#include "normal.h"
 
 namespace geometry {
-   
+
 }
 
 #endif // GEOMETRY_H

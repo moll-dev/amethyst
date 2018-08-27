@@ -4,8 +4,10 @@
 #include <assert.h>
 #include <math.h>
 #include <iostream>
+#include "geometry.h"
 
 namespace geometry {
+
     template <typename T> class Vector2 {
         public:
             Vector2() {
@@ -18,7 +20,7 @@ namespace geometry {
                 assert(!HasNaNs());
             }
 
-            bool HasNaNs() {
+            bool HasNaNs() const {
                 return isnan(x) || isnan(y);
             }
 
@@ -90,9 +92,8 @@ namespace geometry {
     typedef Vector2<float> Vector2f;
     typedef Vector2<int> Vector2i;
 
-
     template <typename T> class Vector3 {
-    public:
+        public:
             Vector3() {
                 x = y = z = 0;
             }
@@ -104,7 +105,7 @@ namespace geometry {
                 assert(!HasNaNs());
             }
 
-            bool HasNaNs() {
+            bool HasNaNs() const {
                 return isnan(x) || isnan(y) || isnan(z);
             }
 
@@ -199,7 +200,7 @@ namespace geometry {
 
     template <typename T> inline T
     Dot(const Vector3<T> &v1, const Vector3<T> &v2) {
-        return v1.x * v2.x + v1.y * v2.y + v1.z * v1.z;
+        return v1.x * v2.x + v1.y * v2.y + v1.z * v2.z;
     } 
 
     template <typename T> inline T
