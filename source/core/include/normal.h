@@ -32,7 +32,6 @@ namespace geometry {
                 s << "Normal3<" << n.x << "," << n.y << "," << n.z << ">";
                 return s;
             }
-
             T x, y, z;
     };
 }

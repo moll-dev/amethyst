@@ -1,19 +1,22 @@
 #ifndef GEOMETRY_H
 #define GEOMETRY_H
 
+#include <limits>
+#define Infinity std::numeric_limits<float>::infinity()
+
 #include "vector.h"
 #include "point.h"
 #include "normal.h"
+#include "ray.h"
 
 namespace geometry {
     // ******************
     // Vector Definitions
     // ******************
-    typedef Vector2<float> Vector2f;
-    typedef Vector2<int> Vector2i;
-
     typedef Vector3<float> Vector3f;
     typedef Vector3<int> Vector3i;
+    typedef Vector2<float> Vector2f;
+    typedef Vector2<int> Vector2i;
 
     // Vector 2 In-Line
     template <typename T, typename U>
