@@ -2,14 +2,20 @@
 #define GEOMETRY_H
 
 #include <limits>
+#include <algorithm>
+#include <math.h>
+
 #define Infinity std::numeric_limits<float>::infinity()
 
-#include "vector.h"
-#include "point.h"
-#include "normal.h"
-#include "ray.h"
 
 namespace geometry {
+
+    template <typename T> class Vector2;
+    template <typename T> class Vector3;
+    template <typename T> class Point2;
+    template <typename T> class Point3;
+    template <typename T> class Normal3;
+
     // ******************
     // Vector Definitions
     // ******************

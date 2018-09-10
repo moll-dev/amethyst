@@ -1,31 +1,28 @@
 #include <iostream>
 #include <geometry.h>
+#include <point.h>
+#include <normal.h>
+#include <vector.h>
+#include <ray.h>
 
 using namespace std;
 using namespace geometry;
 
 int main(){
-    Point2f p2_a = Point2f(1.0f, -1.0f);
-    Point2f p2_b = Point2f(-1.0f, 1.0f);
+    cout << "Hello Tom!" << endl;
 
-    Point3f p3_a = Point3f(1.0f, -1.0f, 1.0f);
-    Point3f p3_b = Point3f(-1.0f, 1.0f, 1.0f);
+    Ray r1 = Ray(Point3f(0.0f, 0.0f, 0.0f), Vector3f(1, 2, 3));
+    Ray r2 = Ray();
 
-    cout << "Point Min / Max" << endl;
+    Ray r3 = RayDifferential(r1);
 
-    cout << "Min: " << Min(p2_a, p2_b) << endl;
-    cout << "Min: " << Min(p3_a, p3_b) << endl;
-    cout << "Max: " << Max(p2_a, p2_b) << endl;
-    cout << "Max: " << Max(p3_a, p3_b) << endl;
+    cout << r1 << endl;
+    cout << r2 << endl;
+    cout << r1(1.0) << endl;
+    cout << r3 << endl;
+    RayDifferential r4 = r3;
+    r4.ScaleDifferentials(2.0f);
+    cout << r4 << endl;
 
-    cout << "Floor: " << Floor(p2_a) << endl;
-    cout << "Floor: " << Floor(p3_a) << endl;
-
-    Normal3f n1 = Normal3f(1.0f, 1.0f, 1.0f);
-    cout << n1 << endl;
-
-    Normal3f n2 = Normal3f(Vector3f(1.0f, 1.0f, 1.0f));
-    cout << n2 << endl;
-    cout << "Thanks tom!" << endl;
     return 0;
 }
